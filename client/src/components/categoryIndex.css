@@ -1,0 +1,28 @@
+.category{
+    background-color: #897ee0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 30px;
+    margin: 5rem auto;
+}  
+
+.category-index {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 70rem;
+}
+
+.category-item {
+  background-color: #f9f9f9;
+  color: aqua;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  margin: 2px;
+  width: 100px;
+  text-align: center;
+}

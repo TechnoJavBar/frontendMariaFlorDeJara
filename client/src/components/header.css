@@ -1,0 +1,15 @@
+.header{
+    display: flex;
+    flex-direction: column;
+    background-color: #282c34;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 24px;
+    font-family: Arial, sans-serif;
+}
+.header-nav{
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
