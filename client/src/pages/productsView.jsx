@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import { getProductById } from '../api/products.api';
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import './ProductsView.css';
+import './productsView.css';
 
 export function ProductsView() {
   const { id } = useParams();
