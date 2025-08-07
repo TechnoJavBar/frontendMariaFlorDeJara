@@ -11,7 +11,7 @@ export function ProductCard({product}){
             <p className="product-price">{product.price}€</p>
             {/* <p className="product-description">{product.description}</p> */}
             <Link to={`/product/${product.id}`}>
-                <Button text="Comprar" />
+                <Button text="Ver detalles" />
             </Link>
         </div>
     )

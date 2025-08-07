@@ -81,17 +81,17 @@
 .buy-button {
   width: 100%;
   padding: 12px 0;
-  background-color: #ffd814;
+  background-color: #777776;
   border: 1px solid #fcd200;
   border-radius: 8px;
   font-size: 16px;
   font-weight: bold;
-  cursor: pointer;
+  cursor: not-allowed;
   transition: background-color 0.2s ease;
 }
 
 .buy-button:hover {
-  background-color: #f7ca00;
+  background-color: #282827;
 }
 
 .image-gallery {
