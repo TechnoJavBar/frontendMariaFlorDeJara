@@ -3,5 +3,11 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: #dfd0f5;
+
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-image: url('../assets/fondoPrueba1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #4a148c;
 }

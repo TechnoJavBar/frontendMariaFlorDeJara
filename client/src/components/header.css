@@ -1,15 +1,31 @@
 .header{
     display: flex;
-    flex-direction: column;
-    background-color: #282c34;
+    flex-direction: row;
+    background-color: #000000;
     color: white;
-    padding: 20px;
+    padding: 20px 10px;
     text-align: center;
+    justify-content: left;
     font-size: 24px;
     font-family: Arial, sans-serif;
 }
 .header-nav{
     display: flex;
-    justify-content: center;
+    align-items: end;
     gap: 15px;
+    padding-bottom: 10px;
+    margin-left: 20%;
+}
+
+.header-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.header-div img{
+    height: 200px;
+    width: auto;
+    border-radius: 10px;
 }

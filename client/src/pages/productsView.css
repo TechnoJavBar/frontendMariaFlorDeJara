@@ -29,8 +29,9 @@
   justify-content: center;
 }
 
-.product-image {
-  width: 100%;
+.product-image-view {
+  width: 350px;
+  height: auto;
   border-radius: 8px;
   object-fit: contain;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);

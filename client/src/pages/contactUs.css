@@ -2,7 +2,10 @@
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-image: url('../assets/fondoContactMe.jpeg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     color: #333;
     display: flex;
     flex-direction: column;
@@ -19,10 +22,13 @@
     margin-bottom: 15px;
     padding: 20px;
     width: 80%;
-    background-color: thistle;
+    background-color: #f7e9ee;
+    backdrop-filter: blur(10px); /* Desenfoque del fondo */
+    -webkit-backdrop-filter: blur(10px); /* Para compatibilidad con Safari */
+    opacity: 0.9;
     text-align: center;
     justify-content: center;
-    border-radius: 25px 25px 25px 0;
+    border-radius: 25px;
 }
 
 .contact-us-info-grid {
