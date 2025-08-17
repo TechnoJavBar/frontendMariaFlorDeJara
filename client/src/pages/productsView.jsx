@@ -36,7 +36,7 @@ export function ProductsView() {
     >
       <div className="product-container">
         <div className="product-column image-column">
-          <img src={mainImage} alt={product.name} className="product-image" />
+          <img src={mainImage} alt={product.name} className="product-image-view" />
           <div className="image-gallery">
             {galleryImages.map((img, index) => (
               <img

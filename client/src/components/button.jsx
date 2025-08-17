@@ -7,7 +7,9 @@ export function Button({ text }) {
         className="btn"
         whileHover={{ 
             scale: 1.1,
-            backgroundColor: '#0056b3', 
+            backgroundColor: "#216869",
+            color: "white",
+            transition: { duration: 0.5 }
         }}
         >{text}</motion.button>
     )

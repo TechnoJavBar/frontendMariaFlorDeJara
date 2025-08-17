@@ -1,27 +1,39 @@
 import { getAllProducts } from "../api/products.api"
-import { useEffect, useState } from "react"
+import { useState, useEffect, useMemo } from "react";
+import { useSearchParams } from "react-router-dom";
 import { ProductCard } from "./productCard"
 import './productsList.css'
 
-export function ProductsList(){
+export function ProductsList() {
+  const [products, setProducts] = useState([]);
+  const [searchParams] = useSearchParams();
 
-    const [products, setProducts] = useState([])
+  const selectedCategories = useMemo(() => searchParams.getAll("category"), [searchParams]);
 
-    useEffect(() => {
+  useEffect(() => {
+    async function loadProducts() {
+      try {
+        let query = "";
 
-        async function loadProducts(){
-                const res = await getAllProducts();
-                setProducts(res.data);
+        if (selectedCategories.length > 0) {
+          query = selectedCategories.map((c) => `category=${c}`).join("&");
         }
 
-        loadProducts();
+        const res = await getAllProducts(query);
+        setProducts(res.data);
+      } catch (error) {
+        console.error("Error cargando productos:", error);
+      }
+    }
 
-    },[])
-    return (
-        <div className="productsList">
-            {products.map(product => (
-                <ProductCard key={product.id} product={product} />
-            ))}
-        </div>
-    )
+    loadProducts();
+  }, [selectedCategories]);
+
+  return (
+    <div className="productsList">
+      {products.map((product) => (
+        <ProductCard key={product.id} product={product} />
+      ))}
+    </div>
+  );
 }
