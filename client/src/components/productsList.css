@@ -10,6 +10,16 @@
     margin: 0 auto;
     box-sizing: border-box;
 }
+
+.searchTab{
+    padding: 5px;
+    background-color: white;
+    color: black;
+    border-radius: 50px;
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
 @media (max-width: 900px) {
     .productsList {
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
