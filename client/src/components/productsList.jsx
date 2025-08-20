@@ -5,35 +5,57 @@ import { ProductCard } from "./productCard"
 import './productsList.css'
 
 export function ProductsList() {
-  const [products, setProducts] = useState([]);
-  const [searchParams] = useSearchParams();
 
-  const selectedCategories = useMemo(() => searchParams.getAll("category"), [searchParams]);
+  //Para el fetch de la api
+  const [products, setProducts] = useState([]);
+  
+  //Para el filtro de busqueda
+  const [search, setSearch] = useState("");
+
+  //Funcion para la barra de busqueda
+
+  const searcher = (e) => {
+    setSearch(e.target.value)
+    console.log(e.target.value)
+  }
+
+  const loadProducts = async () => {
+    try{
+      const res = await getAllProducts()
+      setProducts(res.data);
+    }
+    catch(error){
+      console.log("error cargando productos:", error);
+    }
+    
+  }
+
+  //metodo de filtrado
+  let results = []
+  if (!search)
+  {
+    results = products
+  }
+  else
+  {
+    results = products.filter( (dato) =>
+    dato.name.toLowerCase().includes(search.toLocaleLowerCase())
+    )
+  }
 
   useEffect(() => {
-    async function loadProducts() {
-      try {
-        let query = "";
-
-        if (selectedCategories.length > 0) {
-          query = selectedCategories.map((c) => `category=${c}`).join("&");
-        }
-
-        const res = await getAllProducts(query);
-        setProducts(res.data);
-      } catch (error) {
-        console.error("Error cargando productos:", error);
-      }
-    }
-
     loadProducts();
-  }, [selectedCategories]);
+
+  }, []);
 
   return (
+    <>
+    <input type="text" placeholder="Buscar por nombre" value={search} onChange={searcher} className="searchTab"></input>
     <div className="productsList">
-      {products.map((product) => (
+      {results.map((product) => (
         <ProductCard key={product.id} product={product} />
       ))}
     </div>
+    </>
   );
 }
