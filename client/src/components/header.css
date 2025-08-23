@@ -8,6 +8,7 @@
     justify-content: left;
     font-size: 24px;
     font-family: Arial, sans-serif;
+    width: 100%;
 }
 .header-nav{
     display: flex;

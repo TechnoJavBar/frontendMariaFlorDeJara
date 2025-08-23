@@ -4,7 +4,7 @@ import {motion} from 'framer-motion'
 export function Button({ text }) {
     return (
         <motion.button 
-        className="btn"
+        className="butn"
         whileHover={{ 
             scale: 1.1,
             backgroundColor: "#216869",

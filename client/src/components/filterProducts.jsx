@@ -7,7 +7,10 @@ export function FilterProducts() {
   const [categories, setCategories] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const selectedCategories = useMemo(() => searchParams.getAll("category"), [searchParams]);
+  const selectedCategories = useMemo(
+    () => searchParams.getAll("category"),
+    [searchParams]
+  );
 
   useEffect(() => {
     async function fetchCategories() {
@@ -31,7 +34,6 @@ export function FilterProducts() {
       newSelected = [...selectedCategories, idStr];
     }
 
-    // Solo actualizar si cambió realmente
     const current = searchParams.getAll("category");
     const equalArrays =
       current.length === newSelected.length &&
@@ -43,21 +45,38 @@ export function FilterProducts() {
   };
 
   return (
-    <div className="filter-products">
-      <h3>Filtrar categorías</h3>
-      <div className="filter-products__categories">
+    <div className="filter-products card p-3 mb-4 shadow-sm sticky-top">
+      <h5 className="mb-3 fw-bold">Filtrar categorías</h5>
+      <div className="filter-products__categories d-flex flex-column gap-2">
         {categories.map((category) => (
-          <div key={category.id} className="filter-products__category">
+          <div key={category.id} className="form-check">
             <input
+              className="form-check-input"
               type="checkbox"
               id={`category-${category.id}`}
               checked={selectedCategories.includes(String(category.id))}
               onChange={() => handleChange(category.id)}
             />
-            <label htmlFor={`category-${category.id}`}>{category.name}</label>
+            <label
+              className="form-check-label"
+              htmlFor={`category-${category.id}`}
+            >
+              {category.name}
+            </label>
           </div>
         ))}
       </div>
+
+      <style jsx>{`
+        .filter-products {
+          border-radius: 12px;
+          transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .filter-products:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+        }
+      `}</style>
     </div>
   );
 }
