@@ -1,0 +1,87 @@
+.lotus-container {
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: system-ui, sans-serif;
+}
+
+.lotus-wrapper {
+    position: relative;
+    margin-bottom: 24px;
+}
+
+.lotus {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.petals-back,
+.petals-middle,
+.petals-front {
+    position: absolute;
+    width: 65px;
+    height: 170px;
+    border: groove 1px rgb(190, 125, 247);
+    border-radius: 99% 99% 99% 99%;
+    background: #ffffff;
+    transform-origin: bottom center;
+}
+
+.petals-back {
+    z-index: 0;
+}
+
+.petals-middle {
+    z-index: 1.5;
+}
+
+.petals-front {
+    z-index: 1;
+}
+
+.lotus-center {
+    width: 40px;
+    height: 40px;
+    background: #ffe066;
+    border-radius: 50%;
+    z-index: 4;
+}
+
+.lotus-shadow {
+    width: 80px;
+    height: 8px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    margin: 10px auto 0;
+    filter: blur(4px);
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin: 12px 0 6px;
+}
+
+p {
+    max-width: 320px;
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.button-explore{
+    margin-top: 18px;
+    padding: 10px 20px;
+    border-radius: 999px;
+    border: none;
+    background: #ec4899;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}

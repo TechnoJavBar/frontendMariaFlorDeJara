@@ -1,27 +1,102 @@
-import { ProductsList } from '../components/productsList.jsx';
-import { FilterProducts } from '../components/filterProducts.jsx';
-import './productsPage.css'
+import "../pages/productsPage.css";
+import { getAllProducts } from "../api/products.api.js";
+import { useEffect, useState } from "react";
+import { ProductCard } from "../components/productCard.jsx";
+import EmptyProducts from "../components/emptyProducts.jsx";
 
 export function ProductsPage() {
-    return (
-  <main className="products-page bg-dark container-fluid w-100 min-vh-100 py-4">
-    <div className="container">
-      <h2 className="mb-4 text-center text-lg-start">Nuestros productos</h2>
+  const [products, setProducts] = useState([]);
+  const [categoria, setCategoria] = useState("");
+  const [page, setPage] = useState("");
+  const [search, setSearch] = useState("");
 
-      <div className="row gx-4">
-        {/* Columna de filtros */}
-        <aside className="col-12 col-lg-3 mb-4 mb-lg-0">
-          <FilterProducts />
-        </aside>
+  const [currentPage, setCurrentPage] = useState(1);
+  const [productsPerPage, setProductsPerPage] = useState(8);
 
-        {/* Columna de productos */}
-        <section className="col-12 col-lg-9">
-          <div className="row g-3">
-            <ProductsList />
-          </div>
-        </section>
+  const searcher = (e) => {
+    setSearch(e.target.value);
+    setCurrentPage(1);
+  };
+
+  const loadProducts = async () => {
+    try {
+      const res = await getAllProducts();
+
+      setProducts(res.data.data);
+      setCurrentPage(res.page);
+    } catch (error) {
+      console.log("Error loading products: ", error);
+    }
+  };
+
+  const results = !search
+    ? products
+    : products.filter((dato) =>
+        dato.nombre.toLowerCase().includes(search.toLowerCase())
+      );
+
+  useEffect(() => {
+    loadProducts();
+  }, []);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  // const indexOfLastProduct = currentPage * productsPerPage;
+  // const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  // const currentProducts = results.slice(
+  //   indexOfFirstProduct,
+  //   indexOfLastProduct
+  // );
+  // const totalPages = Math.ceil(results.length / productsPerPage);
+
+  return (
+    <main className="product-page">
+      <div className="filter-container">
+        <h2>Product filter</h2>
+        <input
+          type="text"
+          placeholder="Search"
+          value={search}
+          onChange={searcher}
+        />
       </div>
-    </div>
-  </main>
-);
+      <div className="product-container">
+        {results.length > 0 ? (
+          results.map((product) => (
+            <ProductCard key={product.code} product={product} />
+          ))
+        ) : (
+          <EmptyProducts /> //Este es la flor de loto
+          //<MessageFishes /> // Este son los peces
+        )}
+      </div>
+    </main>
+  );
+}
+{
+  /* <div className="pagination">
+  {/* Paginación 
+  {totalPages > 1 && (
+    <nav className="d-flex justify-content-center mt-4">
+      <ul className="pagination">
+        {Array.from({ length: totalPages }, (_, idx) => (
+          <li
+            key={idx}
+            className={`page-item ${currentPage === idx + 1 ? "active" : ""}`}
+          >
+            <button
+              className="page-link"
+              onClick={() => handlePageChange(idx + 1)}
+            >
+              {idx + 1}
+            </button>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  )}
+</div> */
 }

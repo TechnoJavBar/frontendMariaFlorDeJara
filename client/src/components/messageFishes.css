@@ -1,0 +1,49 @@
+.fishes-container{
+    min-height: 70dvh;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+    font-family: system-ui, sans-serif;
+}
+
+.fishes-wrapper{
+    position: relative;
+    margin-bottom: 24px;
+}
+
+.fish{
+    position: relative;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fish-tail{
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: 40px solid transparent;
+    border-bottom: 40px solid transparent;
+    border-right: 60px solid #ff6f61;
+    transform-origin: center;
+    animation: tail-wag 1s infinite;
+}
+
+.fish-body{
+    width: 180px;
+    height: 120px;
+    background: #ff6f61;
+    border-radius: 50% 50% 50% 50%;
+    position: relative;
+}
+
+.fish-eye{
+    width: 20px;
+    height: 25px;
+    background: #ffffff;
+    border-radius: 50%;
+    position: absolute;
+}

@@ -1,45 +1,23 @@
-import './productCard.css'
-import {Link} from 'react-router-dom';
-import { Button } from '../components/button';
+import "./productCard.css";
+import { Link } from "react-router-dom";
+import { Button } from "../components/button";
 
-
-export function ProductCard({product}){
-   return (
-    <div className="card h-100 shadow-sm border-0 product-card">
+export function ProductCard({ product }) {
+  return (
+    <section className="card-container">
       <img
-        src={product.img1}
-        alt={product.name}
-        className="card-img-top product-image"
-        style={{ objectFit: "cover", height: "250px" }}
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQi8zA7z5s9ZpLjLCAAw0VoruQUTG-lFtDqKA&s"
+        alt={product.nombre}
+        className="card-image"
       />
-      <div className="card-body d-flex flex-column">
-        <h5 className="card-title text-truncate">{product.name}</h5>
-        <p className="card-text fw-bold">{product.price}€</p>
-        <Link to={`/product/${product.id}`} className="mt-auto">
-          <Button text="Ver detalles" />
-        </Link>
+      <div className="card-info">
+        <h3 className="card-title">{product.nombre}</h3>
+        <p className="card-descripcion">{product.descripcion}</p>
+        <div class="card-footer">
+          <span class="card-price">Precio: {product.precio}€</span>
+          <Link to={`/products/${product.code}`}>Ver producto</Link>
+        </div>
       </div>
-      <style jsx>{`
-        .product-card {
-          transition: transform 0.3s, box-shadow 0.3s;
-          border-radius: 12px;
-          overflow: hidden;
-        }
-        .product-card:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-        }
-        .product-image {
-          width: 100%;
-          border-bottom: 1px solid #eee;
-        }
-        .card-title {
-          margin-bottom: 0.5rem;
-        }
-        .card-text {
-          margin-bottom: 1rem;
-        }
-      `}</style>
-    </div>
+    </section>
   );
 }

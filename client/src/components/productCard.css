@@ -1,54 +1,79 @@
-.productCard {
+.card-container {
     display: flex;
     flex-direction: column;
-    width: 100%; /* ocupa la celda completa */
-    height: 100%;
-    box-sizing: border-box;
+    width: 260px;
+    height: 460px;
+    border-radius: 24px;
+    background-color: #ffffff;
+    /* fondo aquí, no dentro */
+    overflow: hidden;
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
 }
 
-.productCard:hover {
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transform: translateY(-3px);
+.card-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    flex-shrink: 0;
 }
 
-/* Imagen adaptable */
-.product-image {
-  width: 100%;
-  height: 200px; /* Fija altura para que todas sean iguales */
-  object-fit: cover;
-  border-radius: 6px;
+.card-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    /* 🔒 ocupa todo el espacio restante */
+    padding: 14px 16px;
 }
 
-/* Texto */
-.product-name {
-  font-size: 1.2em;
-  font-weight: bold;
-  color: #555;
-  margin: 8px 0;
+.card-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 6px;
 }
 
-.product-description {
-  font-size: 1em;
-  color: #555;
-  margin-bottom: 16px;
-  flex-grow: 1;
+.card-description {
+    font-size: 14px;
+    line-height: 1.45em;
+    color: #6b7280;
+
+    height: calc(1.45em * 3);
+    /* 🔒 altura fija */
+    overflow: hidden;
+
+    display: -webkit-box;
+    line-clamp: 3;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
 }
 
-.product-price {
-  font-size: 1.2em;
-  color: #333;
-  margin-bottom: 16px;
+/* El footer se pega abajo siempre */
+.card-footer {
+    margin-top: auto;
 }
 
-.product-category {
-  font-size: 0.9em;
-  color: #888;
-  margin-bottom: 16px;
+.card-price {
+    font-size: 20px;
+    font-weight: 700;
+    color: #0f766e;
+    margin-bottom: 10px;
 }
 
-/* Ajustes móviles */
-@media (max-width: 500px) {
-  .product-image {
-    height: 150px;
-  }
+.card-info a {
+    display: block;
+    text-align: center;
+    padding: 12px;
+    border-radius: 14px;
+    text-decoration: none;
+
+    background: linear-gradient(135deg, #0f766e, #14b8a6);
+    color: white;
+    font-weight: 600;
+}
+
+.card-info a:hover {
+    filter: brightness(1.1);
+    background: linear-gradient(135deg, #14b8a6, #0f766e);
+    transition: all 0.5s ease;
 }

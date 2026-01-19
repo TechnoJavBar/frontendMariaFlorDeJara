@@ -1,12 +1,13 @@
-import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom'
-import { Header } from './components/header'
-import { Footer } from './components/footer'
-import { ProductsPage } from './pages/productsPage'
-import { IndexPage } from './pages/Index'
-import { ProductsView } from './pages/productsView'
-import { ContactUs } from './pages/contactUs'
-import {TermsAndConditionsPage} from './pages/termsAndConditionsPage'
-import './App.css'
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { Header } from "./components/header";
+import { Footer } from "./components/footer";
+import { ProductsPage } from "./pages/productsPage";
+import { IndexPage } from "./pages/Index";
+import { ProductsView } from "./pages/productsView";
+import { ContactUs } from "./pages/contactUs";
+import { TermsAndConditionsPage } from "./pages/termsAndConditionsPage";
+import { Login } from "./pages/login";
+import "./App.css";
 
 function App() {
   return (
@@ -17,9 +18,13 @@ function App() {
           <Route path="/" element={<Navigate to="/Inicio" />} />
           <Route path="/Inicio" element={<IndexPage />} />
           <Route path="/products" element={<ProductsPage />} />
-          <Route path="/product/:id" element={<ProductsView />} />
+          <Route path="/products/:code" element={<ProductsView />} />
           <Route path="/contacto" element={<ContactUs />} />
-          <Route path="/TermsAndConditions" element={<TermsAndConditionsPage />} />
+          <Route path="/login" element={<Login />} />
+          <Route
+            path="/TermsAndConditions"
+            element={<TermsAndConditionsPage />}
+          />
         </Routes>
         <Footer />
       </div>
@@ -27,4 +32,4 @@ function App() {
   );
 }
 
-export default App
+export default App;

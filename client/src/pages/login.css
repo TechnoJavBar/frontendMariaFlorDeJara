@@ -1,0 +1,171 @@
+.main_login{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    min-height: 100vh;
+    width: 100%;
+    background-image: url("../assets/fondoIndex.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 0px;
+    box-sizing: border-box;
+
+}
+
+.main_div_left {
+    background-color: transparent;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: flex-end;
+
+    align-items: left;
+    padding-left: 40px;
+    padding-right: 0;
+    padding-bottom: 190px;
+    height: 100%; 
+}
+
+/* Título */
+.main_div_left h1 {
+    color: #ffffff;
+    font-size: 42px;
+}
+
+.main_div_left p {
+    color: #ffffffcc;
+    font-size: 15px;
+    margin-top: 10px;
+    margin-bottom: 0;
+    text-align: justify;
+    line-height: 1.5;
+    font-weight: 400;
+    font-style: italic;
+
+}
+
+/* Enlace */
+.main_div_left p a {
+    color: #ff6b6b;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    position: relative;
+}
+
+/* Subrayado animado */
+.main_div_left p a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 2px;
+    background-color: #ff6b6b;
+    transition: width 0.25s ease;
+}
+
+.main_div_left p a:hover{
+    color: #ff8e8e;
+}
+
+.main_div_left p a:hover::after {
+    width: 100%; }
+
+.main_div_right{
+    background-color: transparent;
+    backdrop-filter: blur(3px);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color : #ffffff;
+}
+
+.div_right_form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 20px;
+    width: 100%;
+  }
+  
+  /* Título */
+  .form_title {
+    color: #ffffff;
+    font-size: 34px;
+    margin-bottom: 50px;
+
+  }
+  
+  /* Labels */
+  .form_label {
+    font-size: 14px;
+    color: #ffffffb0;
+  }
+  
+  /* Contenedor input + icono */
+  .input_wrapper {
+    display: flex;
+    align-items: center;
+    width: 75%;
+    padding: 6px 0;
+    gap: 8px;
+  }
+  
+  /* Iconos */
+  .input_wrapper svg {
+    color: #ffffffb0;
+  }
+  
+  /* Input */
+  .form_input {
+    flex: 1;
+    border: none;
+    border-bottom: 2px solid #000000;
+    background: transparent;
+    color: #ffffff;
+    font-size: 16px;
+    outline: none;
+  }
+  
+  .form_input::placeholder {
+    color: #ffffff80;
+  }
+  
+  .form_input_valid{
+    border-bottom: 2px solid #06d7a0;
+  }
+  
+  .form_input_invalid{
+    border-bottom: 2px solid #ea3b3b;
+  }
+  
+  /* Botón */
+  .form_button {
+    margin-top: 15px;
+    width: 75%;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    background-color: #ff6b6b;
+    color: #ffffff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+  }
+  
+  .form_button:hover {
+    background-color: #e85a5a;
+    transform: translateY(-1px);
+  }
+  
+  .form_button:active {
+    transform: translateY(0);
+  }
