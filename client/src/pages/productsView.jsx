@@ -2,21 +2,24 @@ import { useParams } from "react-router-dom";
 import { getProductById } from "../api/products.api";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import {useCart} from "../context/CartContext.jsx";
 import EmptyProducts from "../components/emptyProducts.jsx";
 import "./productsView.css";
 
 export function ProductsView() {
-  const { code } = useParams();
+  const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [mainImage, setMainImage] = useState(null);
+  const {addToCart} = useCart();
 
   useEffect(() => {
     async function findProduct() {
       try {
-        const res = await getProductById(code);
-        console.log(res.data);
+        const res = await getProductById(id);
         setProduct(res.data);
-        setMainImage(res.data.img1); // Imagen principal por defecto
+        //TODO: establecer como imagen predeterminada product.imagenes[0] ya que es la primera
+        setMainImage(res.data.imagenes[0]);
+        // setMainImage("https://imgs.search.brave.com/BmXUs-oItvQsA0E-erxXK2QXz0XiXGKLkU9xOk_VlPY/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NjFJQ3BKUkVzMkwu/anBn"); // Imagen principal por defecto
       } catch (error) {
         console.error("Error al obtener el producto:", error);
         return <EmptyProducts />;
@@ -24,33 +27,28 @@ export function ProductsView() {
     }
 
     findProduct();
-  }, [code]);
+  }, [id]);
 
   //TODO: agregar un loader spinner
   if (!product) return <p>SPINNER</p>;
 
-  const galleryImages = [product.img1, product.img2, product.img3].filter(
-    Boolean
-  );
 
   return (
     <motion.div
-      className="product-page container-fluid bg-white py-5"
+      className="product-view"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.4 }}
     >
-      <div className="row gx-4 align-items-start d-flex justify-content-between">
         {/* Columna de imágenes a la izquierda */}
-        <div className="col-12 col-md-6 mb-4 text-center">
+        <div className="container-images">
           <img
             src={mainImage}
             alt={product.nombre}
-            className="img-fluid rounded shadow-sm mb-3"
-            style={{ width: "400px", height: "400px", objectFit: "cover" }}
+            className="main-image"
           />
-          <div className="d-flex gap-2 justify-content-center flex-wrap">
-            {galleryImages.map((img, index) => (
+          <div className="gallery-images">
+            {product.imagenes.map((img, index) => (
               <img
                 key={index}
                 src={img}
@@ -58,12 +56,6 @@ export function ProductsView() {
                 className={`img-thumbnail ${
                   mainImage === img ? "border-primary" : ""
                 }`}
-                style={{
-                  width: "60px",
-                  height: "60px",
-                  cursor: "pointer",
-                  objectFit: "cover",
-                }}
                 onClick={() => setMainImage(img)}
               />
             ))}
@@ -71,25 +63,25 @@ export function ProductsView() {
         </div>
 
         {/* Columna de información pegada a la derecha */}
-        <div className="col-12 col-md-4 d-flex flex-column justify-content-start ms-auto">
-          <h1 className="h5 fw-bold">{product.nombre}</h1>
-          <p className="text-muted">{product.descripcion}</p>
-          <p className="h6 text-success fw-bold">{product.precio} €</p>
+        <div className="container-information">
+          <h1 className="container-information-h1">{product.nombre}</h1>
+          <p className="container-information-descripcion">{product.descripcion}</p>
+          <p className="container-information-precio">{product.precio} </p>
           <p
-            className={`fw-medium ${
-              product.stock > 0 ? "text-success" : "text-danger"
+            className={`${
+              product.stock > 0 ? "texto-true" : "texto-false"
             }`}
           >
-            {product.stock > 0 ? `Stock: ${product.stock}` : "Agotado"}
+            {product.stock > 0 ? `Stock: ${product.stock} uds` : "Agotado"}
           </p>
           <button
-            className="btn btn-primary btn-lg mt-3 w-100"
+            className="container-information-button"
             disabled={product.stock === 0}
+            onClick={() => addToCart(product)}
           >
-            {product.stock > 0 ? "Comprar ahora" : "No disponible"}
+            {product.stock > 0 ? "Añadir al carrito" : "No disponible"}
           </button>
         </div>
-      </div>
     </motion.div>
   );
 }
