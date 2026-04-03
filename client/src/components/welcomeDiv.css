@@ -1,69 +1,76 @@
-@import url('https://fonts.googleapis.com/css2?family=Imperial+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@400;600&display=swap');
 
 .enhanced-welcome {
   padding: 4rem 2rem;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  max-width: auto;
+  margin: 20px auto; /* Centrado horizontal */
+  max-width: 900px; /* Limitamos el ancho para que el texto no se estire demasiado */
   text-align: center;
   
-  background: rgba(255, 255, 255, 0.2); /* Fondo semitransparente */
-  backdrop-filter: blur(10px); /* Desenfoque del fondo */
-  -webkit-backdrop-filter: blur(10px); /* Para compatibilidad con Safari */
+  background: rgba(255, 255, 255, 0.25); 
+  backdrop-filter: blur(12px); 
+  -webkit-backdrop-filter: blur(12px);
 
-  color: #ffffff;
-  border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  animation: fadeIn 1s ease-out;
+  color: #1a1a1a; /* Un gris casi negro es más suave que el negro puro */
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Añadimos un borde sutil para definir el glassmorphism */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1s ease-out forwards;
 }
 
 .enhanced-welcome h1 {
-  font-size: 3.8rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-  line-height: 1.2;
-  font-family: "Imperial Script", cursive;
-  color: black;
-
+  /* Cambio clave: Fuente Serif de alto contraste, más gruesa y legible */
+  font-family: 'Playfair Display', serif;
+  font-size: 4.5rem; /* Un poco más grande para impacto */
+  font-weight: 900;
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+  color: #000000;
+  letter-spacing: -1px; /* Hace que se vea más profesional */
 }
 
+/* Si quieres que una parte del texto destaque (clase .brand) */
 .enhanced-welcome .brand {
-  /* background: linear-gradient(to right, #B38A32, #715413);
+  display: block; /* Para que baje de línea si es necesario */
+  background: linear-gradient(45deg, #ff4081, #7c4dff);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; */
-  font-family: "Imperial Script", cursive;
+  -webkit-text-fill-color: transparent;
+  font-weight: 900;
 }
 
 .enhanced-welcome p {
-  font-size: 1.3rem;
-  margin-bottom: 2rem;
-  color: #fff;
+  font-family: 'Poppins', sans-serif; /* Fuente sans-serif para el cuerpo (máxima legibilidad) */
+  font-size: 1.2rem;
+  margin-bottom: 2.5rem;
+  color: #333333;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.enhanced-welcome a button,
 .enhanced-welcome .button {
-  background: #ffffff;
-  color: #ff4081;
+  background: #ff4081; /* Color vibrante */
+  color: #ffffff;
   border: none;
-  padding: 0.8rem 1.6rem;
-  font-size: 1rem;
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
   font-weight: 600;
-  border-radius: 30px;
+  font-family: 'Poppins', sans-serif;
+  border-radius: 50px;
   cursor: pointer;
-  transition: transform 0.2s ease, background 0.3s ease;
-  box-shadow: 0 4px 12px rgba(255, 64, 129, 0.3);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 6px 15px rgba(255, 64, 129, 0.4);
 }
 
-.enhanced-welcome a button:hover,
 .enhanced-welcome .button:hover {
-  background: #ffeef4;
-  transform: scale(1.05);
+  background: #f50057;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(255, 64, 129, 0.5);
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;

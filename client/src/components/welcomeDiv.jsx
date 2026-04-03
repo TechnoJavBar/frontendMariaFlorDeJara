@@ -13,7 +13,7 @@ export function WelcomeDiv() {
       transition={{ duration: 1, ease: "easeOut" }}
     >
       <h1 className="display-5 fw-bold mb-3">
-        ¡Bienvenido a <span className="brand">MariaFlorDeJara</span>!
+        Bienvenido a <span className="brand">MariaFlorDeJara</span>
       </h1>
       <p className="lead mb-4">
         <BiSolidHomeSmile className="me-2" /> Descubre productos únicos, llenos de color y buena vibra. <BiSolidHomeSmile className="ms-2" />
