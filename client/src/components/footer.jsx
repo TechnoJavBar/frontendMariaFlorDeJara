@@ -36,7 +36,7 @@ export function Footer() {
 
         <div className="contact-info">
           <h5>Contacto</h5>
-          <p>Correo: elbingo33@gmail.com</p>
+          <p>Correo: mariaflordejara@gmail.com</p>
           <p>Teléfono: +34 627 34 87 47</p>
         </div>
       </div>
