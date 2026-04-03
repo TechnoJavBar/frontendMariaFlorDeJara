@@ -1,0 +1,113 @@
+/* Register.css */
+.register-main-container{
+    background-image: url("../assets/fondoIndex.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Mantiene el fondo quieto al hacer scroll */
+
+    /* 2. Dimensiones y Caja */
+    min-height: 100vh; /* Ocupa al menos el 100% de la altura de la ventana */
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Mejor que content-box para evitar desbordamientos */
+
+    /* 3. Centrado del formulario (Opcional pero recomendado) */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.register-container {
+    max-width: 650px;
+    width: 100%;
+    margin: 50px auto;
+    padding: 40px;
+    border-radius: 12px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    /* --- EFECTO BLUR (Glassmorphism) --- */
+    background: rgba(255, 255, 255, 0.2); /* Fondo blanco muy transparente */
+    backdrop-filter: blur(10px);          /* Esto crea el desenfoque del fondo */
+    -webkit-backdrop-filter: blur(10px);   /* Soporte para Safari */
+    
+    /* Borde sutil para dar profundidad */
+    border: 1px solid rgba(255, 255, 255, 0.3); 
+    
+    /* Sombra más suave para que no compita con el blur */
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+}
+
+.register-container h2 {
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 30px;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.register-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Espaciado uniforme entre inputs */
+}
+
+/* Estilo para todos los inputs */
+.register-container input {
+    padding: 12px 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+/* Efecto al hacer clic en el input */
+.register-container input:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+}
+
+/* Estilo específico para el input de fecha */
+.register-container input[type="date"] {
+    color: #666;
+}
+
+/* Botón de registro */
+.register-container button {
+    margin-top: 10px;
+    padding: 14px;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.register-container button:hover {
+    background-color: #357abd;
+}
+
+.register-container button:active {
+    transform: scale(0.98);
+}
+
+/* Estado deshabilitado (cuando está cargando) */
+.register-container button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Ajustes para móviles */
+@media (max-width: 480px) {
+    .register-container {
+        margin: 20px;
+        padding: 25px;
+    }
+}
