@@ -1,12 +1,12 @@
 import "./productCard.css";
 import { Link } from "react-router-dom";
-import { Button } from "../components/button";
 
 export function ProductCard({ product }) {
   return (
     <section className="card-container">
+      {/* TODO: añadir en src {product.images[0]} ya que será la principal */}
       <img
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQi8zA7z5s9ZpLjLCAAw0VoruQUTG-lFtDqKA&s"
+        src={product?.imagenes?.length > 0 ? product.imagenes[0] : "../assets/logoMariaflordejara.jpg"}
         alt={product.nombre}
         className="card-image"
       />
@@ -15,7 +15,7 @@ export function ProductCard({ product }) {
         <p className="card-descripcion">{product.descripcion}</p>
         <div class="card-footer">
           <span class="card-price">Precio: {product.precio}€</span>
-          <Link to={`/products/${product.code}`}>Ver producto</Link>
+          <Link to={`/products/${product.id}`}>Ver producto</Link>
         </div>
       </div>
     </section>
