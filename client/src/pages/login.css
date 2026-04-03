@@ -3,7 +3,7 @@
     grid-template-columns: 2fr 1fr;
     min-height: 100vh;
     width: 100%;
-    background-image: url("../assets/fondoIndex.jpg");
+    background-image: url("../assets/imagenInicio.png");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -29,7 +29,7 @@
 
 /* Título */
 .main_div_left h1 {
-    color: #ffffff;
+    color: #000000;
     font-size: 42px;
 }
 
@@ -94,7 +94,7 @@
   
   /* Título */
   .form_title {
-    color: #ffffff;
+    color: #000000;
     font-size: 34px;
     margin-bottom: 50px;
 
@@ -103,7 +103,7 @@
   /* Labels */
   .form_label {
     font-size: 14px;
-    color: #ffffffb0;
+    color: #000000;
   }
   
   /* Contenedor input + icono */
@@ -117,7 +117,7 @@
   
   /* Iconos */
   .input_wrapper svg {
-    color: #ffffffb0;
+    color: #000000b0;
   }
   
   /* Input */
@@ -126,13 +126,13 @@
     border: none;
     border-bottom: 2px solid #000000;
     background: transparent;
-    color: #ffffff;
+    color: #757575;
     font-size: 16px;
     outline: none;
   }
   
   .form_input::placeholder {
-    color: #ffffff80;
+    color: #00000080;
   }
   
   .form_input_valid{
@@ -151,7 +151,7 @@
     font-size: 16px;
     border: none;
     border-radius: 6px;
-    background-color: #ff6b6b;
+    background-color: #d33333;
     color: #ffffff;
     cursor: pointer;
     display: flex;
@@ -169,3 +169,64 @@
   .form_button:active {
     transform: translateY(0);
   }
+
+/* --- RESPONSIVE --- */
+
+/* --- RESPONSIVE --- */
+
+@media (max-width: 768px) {
+    .main_login {
+        /* Cambiamos a una sola columna */
+        grid-template-columns: 1fr;
+        /* Permitimos que el scroll crezca si el contenido es largo */
+        height: auto; 
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .main_div_left {
+        /* Ajustamos el espacio para que no sea tan alto en móvil */
+        height: auto;
+        padding: 60px 20px 40px 20px; 
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .main_div_left h1 {
+        font-size: 30px; /* Reducimos un poco el título en móvil */
+        text-align: center;
+    }
+
+    .main_div_left p {
+        text-align: center; /* Centramos el texto para mejor estética móvil */
+        font-size: 14px;
+        margin: 15px auto 0 auto;
+        max-width: 90%;
+    }
+
+    .main_div_right {
+        height: auto;
+        padding: 40px 20px;
+        /* Un fondo con blur para que el formulario destaque sobre la imagen */
+        background-color: rgba(255, 255, 255, 0.7); 
+        backdrop-filter: blur(10px);
+    }
+
+    .div_right_form {
+        align-items: center;
+    }
+
+    .input_wrapper, 
+    .form_button {
+        width: 100%; /* Aprovechamos todo el ancho disponible */
+        max-width: 350px;
+    }
+
+    .form_title {
+        font-size: 26px;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+}
