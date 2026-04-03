@@ -1,42 +1,177 @@
-.product-page{
+.product-page {
     display: flex;
-    flex-direction: row;
+    flex-direction: row; 
     gap: 20px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding: 20px;
     min-height: 100dvh;
-    background-color: aliceblue;
-
+    background-image: url("../assets/imagenCatalogo.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-.filter-container{
-    width: 250px;
-    padding: 10px;
-    border-radius: 20px;
-    background-color: aqua;
+.filter-container {
+    width: 280px;
+    min-width: 280px; /* Para que no se encoja */
+    height: fit-content; /* Solo crece lo que ocupa su contenido */
+    padding: 20px;
+    border-radius: 15px;
+    background-color: #ffffff; /* Blanco para que resalte el fondo */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* Sombra suave profesional */
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    margin-left: 10px;
+    gap: 15px;
+    position: sticky; /* Se queda fijo al hacer scroll */
+    top: 20px;
 }
 
-.product-container{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-
+.main-content {
+    display: flex;
+    flex-direction: column; /* Esto manda la paginación abajo */
+    flex-grow: 1; /* Ocupa todo el espacio restante */
     gap: 20px;
-    width: 100%;
-    padding: 10px;
-    margin-right: 10px;
-    background-color: beige;
 }
 
-.pagination{
+.product-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    width: 100%;
+}
+/* Contenedor principal de la paginación */
+.pagination-container {
+    display: flex;            /* Hace que los hijos se pongan en línea */
+    flex-direction: row;      /* Asegura la orientación horizontal */
+    justify-content: center;  /* Centra los números horizontalmente */
+    align-items: center;      /* Alinea los números verticalmente */
+    gap: 8px;                 /* Espacio entre cada botón */
+    padding: 20px 0;
+    width: 100%;              /* Ocupa el ancho de la columna derecha */
+    margin-top: auto;         /* Empuja la paginación al fondo si hay pocos productos */
+}
+/* Estilo base de cada botón/número */
+.btn-pag {
+    width: 45px;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    
+    border: 1px solid #e0e0e0;
+    background-color: #ffffff;
+    color: #444;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 10px; /* Bordes redondeados suaves */
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
+    min-width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Botón de la página actual (Activo) */
+.btn-pag.active {
+    background-color: #228b22; /* El verde de tu marca */
+    color: #ffffff;
+    border-color: #228b22;
+    box-shadow: 0 4px 10px rgba(34, 139, 34, 0.2);
+}
+
+/* Efecto Hover (cuando pasas el mouse) */
+.btn-pag:hover:not(.active):not(:disabled) {
+    background-color: #f8fdf8;
+    border-color: #228b22;
+    color: #228b22;
+    transform: translateY(-2px); /* Pequeño salto hacia arriba */
+}
+
+/* Estado Desactivado (Flechas cuando no hay más páginas) */
+.btn-pag:disabled {
+    background-color: #f5f5f5;
+    color: #ccc;
+    cursor: not-allowed;
+    border-color: #eee;
+}
+
+/* Estilo especial para las flechas « » */
+.btn-pag:first-child, 
+.btn-pag:last-child {
+    font-size: 1.2rem;
+    background-color: #fafafa;
+}
+
+/* Responsive: botones un poco más grandes en móvil para facilitar el toque */
+@media (max-width: 480px) {
+    .btn-pag {
+        width: 40px;
+        height: 40px;
+        font-size: 0.9rem;
+    }
+    .pagination-container {
+        gap: 5px;
+    }
+}
+
+/* --- RESPONSIVE PARA EL CATÁLOGO --- */
+
+@media (max-width: 992px) {
+    .product-page {
+        /* Cambiamos de fila a columna */
+        flex-direction: column;
+        gap: 30px;
+        padding: 15px;
+    }
+
+    .filter-container {
+        /* El filtro ahora ocupa todo el ancho */
+        width: 100%;
+        min-width: 100%;
+        position: relative; /* Deja de ser sticky para no tapar productos al bajar */
+        top: 0;
+        box-sizing: border-box;
+    }
+
+    .product-container {
+        /* Ajustamos el mínimo de la tarjeta para que quepan 2 en tablets */
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 15px;
+    }
+}
+
+@media (max-width: 600px) {
+    .product-container {
+        /* En móviles pequeños, una sola tarjeta por fila o tarjetas más ajustadas */
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 10px;
+    }
+
+    .filter-container {
+        padding: 15px;
+    }
+
+    .main-content {
+        gap: 15px;
+    }
+
+    /* Ajuste de la paginación para que no se desborde */
+    .pagination-container {
+        flex-wrap: wrap; /* Si hay muchas páginas, que bajen a la siguiente línea */
+        gap: 5px;
+    }
+
+    .btn-pag {
+        width: 35px;
+        height: 35px;
+        font-size: 0.85rem;
+    }
+}
+
+/* Ajuste fino para pantallas muy pequeñas (iPhone SE, etc.) */
+@media (max-width: 380px) {
+    .product-container {
+        /* Una sola columna si el espacio es crítico */
+        grid-template-columns: 1fr;
+    }
 }
