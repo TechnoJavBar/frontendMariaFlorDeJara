@@ -1,10 +1,15 @@
 import React from 'react';
 import "./cartItem.css";
+import logo from "../assets/logoMariaflordejara.jpg";
 
 const CartItem = ({ item, updateQuantity, removeItem }) => {
   return (
     <div className="cart-item">
+      {item?.imagenes?.length > 0 ? 
       <img src={item.imagenes[0]} alt={item.nombre} />
+      :
+      <img src={logo} alt={item.nombre} />
+      }
       
       <div className="item-info">
         <h3>{item.nombre}</h3>
