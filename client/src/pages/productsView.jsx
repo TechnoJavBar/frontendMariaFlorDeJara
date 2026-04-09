@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import {useCart} from "../context/CartContext.jsx";
 import EmptyProducts from "../components/emptyProducts.jsx";
+
+import logo from "../assets/logoMariaflordejara.jpg";
 import "./productsView.css";
 
 export function ProductsView() {
@@ -18,8 +20,13 @@ export function ProductsView() {
         const res = await getProductById(id);
         setProduct(res.data);
         //TODO: establecer como imagen predeterminada product.imagenes[0] ya que es la primera
-        setMainImage(res.data.imagenes[0]);
-        // setMainImage("https://imgs.search.brave.com/BmXUs-oItvQsA0E-erxXK2QXz0XiXGKLkU9xOk_VlPY/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NjFJQ3BKUkVzMkwu/anBn"); // Imagen principal por defecto
+        if(res.data.imagenes){
+          setMainImage(res.data.imagenes[0]);
+        }
+        else{
+          setMainImage(logo);
+        }
+        
       } catch (error) {
         console.error("Error al obtener el producto:", error);
         return <EmptyProducts />;
@@ -47,6 +54,7 @@ export function ProductsView() {
             alt={product.nombre}
             className="main-image"
           />
+          {product?.imagenes?.length > 0 ?
           <div className="gallery-images">
             {product.imagenes.map((img, index) => (
               <img
@@ -60,6 +68,11 @@ export function ProductsView() {
               />
             ))}
           </div>
+        :
+        <>
+        </>  
+        }
+          
         </div>
 
         {/* Columna de información pegada a la derecha */}
