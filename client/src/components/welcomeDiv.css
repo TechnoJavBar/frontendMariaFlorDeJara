@@ -1,79 +1,79 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@400;600&display=swap');
-
-.enhanced-welcome {
-  padding: 4rem 2rem;
-  margin: 20px auto; /* Centrado horizontal */
-  max-width: 900px; /* Limitamos el ancho para que el texto no se estire demasiado */
+.glass-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
   
-  background: rgba(255, 255, 255, 0.25); 
-  backdrop-filter: blur(12px); 
+  /* Efecto Vidrio */
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-
-  color: #1a1a1a; /* Un gris casi negro es más suave que el negro puro */
+  
+  /* Bordes y Estética */
   border-radius: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.3); /* Añadimos un borde sutil para definir el glassmorphism */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  animation: fadeIn 1s ease-out forwards;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.1);
+  
+  /* Tamaño de la tarjeta */
+  padding: 40px;
+  max-width: 550px;
+  width: 100%;
 }
 
-.enhanced-welcome h1 {
-  /* Cambio clave: Fuente Serif de alto contraste, más gruesa y legible */
-  font-family: 'Playfair Display', serif;
-  font-size: 4.5rem; /* Un poco más grande para impacto */
-  font-weight: 900;
-  margin-bottom: 1.5rem;
-  line-height: 1.1;
-  color: #000000;
-  letter-spacing: -1px; /* Hace que se vea más profesional */
+.welcome-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #333;
+  margin-bottom: 1rem;
 }
 
-/* Si quieres que una parte del texto destaque (clase .brand) */
-.enhanced-welcome .brand {
-  display: block; /* Para que baje de línea si es necesario */
-  background: linear-gradient(45deg, #ff4081, #7c4dff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 900;
+.brand {
+  color: #d4a373;
+  white-space: nowrap; /* Evita que el nombre se parta si hay espacio */
 }
 
-.enhanced-welcome p {
-  font-family: 'Poppins', sans-serif; /* Fuente sans-serif para el cuerpo (máxima legibilidad) */
-  font-size: 1.2rem;
-  margin-bottom: 2.5rem;
-  color: #333333;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.enhanced-welcome .button {
-  background: #ff4081; /* Color vibrante */
-  color: #ffffff;
-  border: none;
-  padding: 1rem 2.5rem;
+.welcome-text {
   font-size: 1.1rem;
-  font-weight: 600;
-  font-family: 'Poppins', sans-serif;
+  color: #555;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.icon {
+  color: #d4a373;
+  flex-shrink: 0;
+}
+
+.welcome-link {
+  text-decoration: none;
+}
+
+.button-welcomeDiv {
+  background-color: #d4a373;
+  color: white;
+  border: none;
+  padding: 14px 35px;
+  font-size: 1rem;
+  font-weight: 700;
   border-radius: 50px;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: 0 6px 15px rgba(255, 64, 129, 0.4);
+  box-shadow: 0 4px 15px rgba(212, 163, 115, 0.3);
+  transition: background 0.3s ease;
 }
 
-.enhanced-welcome .button:hover {
-  background: #f50057;
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 8px 20px rgba(255, 64, 129, 0.5);
+.button-welcomeDiv:hover {
+  background-color: #bc8a5f;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
+/* Responsividad */
+@media (max-width: 500px) {
+  .glass-card {
+    padding: 30px 20px;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  .welcome-title {
+    font-size: 1.8rem;
   }
 }
