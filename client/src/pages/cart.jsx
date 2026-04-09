@@ -3,7 +3,7 @@ import {useCart} from "../context/CartContext.jsx";
 import "./cart.css";
 
 export function CartPage() {
-  const { cart, updateQuantity, removeItem, clearCart, subtotal, totalItems } = useCart();
+  const { cart, updateQuantity, removeItem, clearCart, subtotal, totalItems, sendWhatsappCart } = useCart();
 
   if (cart.length === 0) {
     return (
@@ -39,7 +39,7 @@ export function CartPage() {
             <span>Total</span>
             <span>{subtotal.toFixed(2)}€</span>
           </div>
-          <button className="btn-checkout">Finalizar Compra</button>
+          <button onClick={sendWhatsappCart} className="btn-checkout">Finalizar Compra</button>
           <button onClick={clearCart} className="btn-clear-all">
             Vaciar Carrito
           </button>
