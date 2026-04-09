@@ -59,7 +59,6 @@ export const CartProvider = ({ children }) => {
 
   const sendWhatsappCart = () => {
     const telefono = "34627348747"
-    // const telefono = "34698905117";
 
     try {
       if (cart.length === 0) {
