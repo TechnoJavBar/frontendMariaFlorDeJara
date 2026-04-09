@@ -1,5 +1,5 @@
 import "../pages/productsPage.css";
-import { getAllProducts } from "../api/products.api.js";
+import { getAllProducts, searchProductsByName } from "../api/products.api.js";
 import { useEffect, useState, useCallback } from "react";
 import { ProductCard } from "../components/productCard.jsx";
 import EmptyProducts from "../components/emptyProducts.jsx";
@@ -45,10 +45,28 @@ export function ProductsPage() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const searcher = (e) => {
-    setSearch(e.target.value);
-    setCurrentPage(1); // Siempre volver a la pág 1 al buscar
-  };
+  useEffect(() => {
+    if (!search.trim()) {
+      loadProducts();
+      return;
+    }
+
+    const timeoutId = setTimeout(async () => {
+      setLoading(true);
+      try {
+        const res = await searchProductsByName(search);
+        console.log(res);
+        setProducts(res.data);
+        setCurrentPage(1); // Siempre volver a la pág 1 al buscar
+      } catch (error) {
+        console.error("Error buscando articulos", error);
+      } finally {
+        setLoading(false);
+      }
+    }, 500);
+
+    return () => clearTimeout(timeoutId);
+  }, [search]);
 
   return (
     <main className="product-page">
@@ -58,7 +76,7 @@ export function ProductsPage() {
           type="text"
           placeholder="Search products..."
           value={search}
-          onChange={searcher}
+          onChange={(e) => setSearch(e.target.value)}
         />
       </div>
 
