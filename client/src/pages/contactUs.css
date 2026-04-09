@@ -8,8 +8,9 @@
   justify-content: center; 
   background-image: url('../assets/imagenInicio.png'); /* Tu imagen de los perfumes */
   background-position: center;
-  background-repeat: no-repeat;
   background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   padding: 20px;
 }
 

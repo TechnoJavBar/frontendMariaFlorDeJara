@@ -8,7 +8,9 @@
     margin: 0;
     font-family: 'Poppins', sans-serif;
     background-image: url('../assets/imagenInicio.png');
-    background-repeat: no-repeat;
+    background-position: center;
     background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     color: #4a148c;
 }
