@@ -4,7 +4,7 @@ import './contactUs.css';
 
 export function ContactUs() {
 
-  const whatsappNumber = "627348747"; 
+  const whatsappNumber = "34627348747"; 
   const emailAddress = "mariaflordejara@gmail.com";
 
 
